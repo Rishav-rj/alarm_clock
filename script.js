@@ -11,7 +11,8 @@ let sun = document.querySelector(".sun");
 let moon = document.querySelector(".moon");
 let brightness = document.querySelector(".bright");
 let body = document.getElementsByTagName("body");
-let alarmsArray = JSON.parse(localStorage.getItem("alarmsList"));
+let alarmsArray = [];
+// let alarmsArray = JSON.parse(localStorage.getItem("alarmsList"));
 
 let initialHour = 0,
     initialMin = 0,
@@ -111,7 +112,7 @@ const startAlarm = (e)=>{
     let [alarmExists, alarmObject, alarmIndex] = AlarmCheck("id", searchId);
     if(alarmExists){
         alarmsArray[alarmIndex].isActive = true;
-        localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
+        // localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
     }
 };
 
@@ -122,7 +123,7 @@ const stopAlarm = (e)=>{
     if(alarmExists){
         alarmsArray[alarmIndex].isActive = false;
         sound.pause();
-        localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
+        // localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
     }
 };
 
@@ -134,7 +135,7 @@ const deleteAlarm = (e)=>{
         e.target.parentElement.parentElement.remove();
         alarmsArray.splice(alarmIndex, 1);
         sound.pause();
-        localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
+        // localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
     }
 }
 
@@ -209,7 +210,7 @@ alarm_set_btn.addEventListener("click", ()=>{
     }
 
     alarmsArray.push(alarmObj);
-    localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
+    // localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
     createAlarm(alarmObj);
     hour.value = appendZero(initialHour);
     min.value = appendZero(initialMin);

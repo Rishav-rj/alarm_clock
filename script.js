@@ -51,16 +51,19 @@ function currentTime(){
     time.innerHTML = `${hours}:${minutes}:${seconds}:${am_pm}`
 
     // Alarm check & play
-    alarmsArray.forEach((alarm, index)=>{
-        if(alarm.isActive){
-            if(`${alarm.alarmHour}:${alarm.alarmMin
-            }:${alarm.alarmSec}:${alarm.alarmAM_PM}` === `${hours}:${minutes}:${seconds}:${am_pm}`){
-                sound.play()
-                sound.loop = true;
-                alert("Times Up")   
+    if (alarmsArray != null && alarmsArray.length > 0){
+        alarmsArray.map((alarm, index)=>{
+            if(alarm.isActive){
+                if(`${alarm.alarmHour}:${alarm.alarmMin
+                }:${alarm.alarmSec}:${alarm.alarmAM_PM}` === `${hours}:${minutes}:${seconds}:${am_pm}`){
+                    sound.play()
+                    sound.loop = true;
+                    alert("Times Up")   
+                }
             }
-        }
-    })
+        })
+    }
+    
 
     // Sun and Moon Movement feature called
     sun_moon_movement(hours, am_pm)
@@ -73,7 +76,7 @@ let AlarmCheck = (para, value) => {
     let alarmObject,
         alarmIndex,
         alarmExists = false;
-    alarmsArray.forEach((alarm, index)=>{
+    alarmsArray.map((alarm, index)=>{
         if(alarm[para] == value){
             alarmExists = true;
             alarmObject = alarm;
@@ -208,6 +211,9 @@ alarm_set_btn.addEventListener("click", ()=>{
         return
     }
 
+    if (alarmsArray == null){
+        alarmsArray = [];
+    }
     alarmsArray.push(alarmObj);
     localStorage.setItem("alarmsList", JSON.stringify(alarmsArray))
     createAlarm(alarmObj);
@@ -341,7 +347,7 @@ window.onload = ()=>{
     hour.value = appendZero(initialHour);
     min.value = appendZero(initialMin);
     sec.value = appendZero(initialSec);
-    if(alarmsArray.length > 0){
+    if(alarmsArray != null && alarmsArray.length > 0){
         for(let i = 0; i<alarmsArray.length; i++ ){
             createAlarm(alarmsArray[i]);
         }

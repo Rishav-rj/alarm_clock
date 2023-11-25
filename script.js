@@ -331,7 +331,7 @@ function sun_moon_movement(hours, am_pm){
 }
 
 
-
+// Run this once page loaded
 window.onload = ()=>{
     setInterval(currentTime);
     initialHour = 0;

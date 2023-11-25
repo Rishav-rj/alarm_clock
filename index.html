@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Time</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8874c6cb4f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="backgound-bottom"></div>
+    <div class="sun"></div>
+    <div class="moon"></div>
+    <h1 class="bright"></h1>
+    <h3>Alarm Cl<span><i class="fa-regular fa-clock"></i></span>ck</h3>
+    <div class="container">
+        <div class="clock-container">
+            <h2>00:00:00:PM</h2>
+            <div class="input-container">
+                <input
+                type="number" 
+                id="hour"
+                placeholder="00" 
+                min="0"
+                max="11"
+                />:
+                <input
+                    type="number" 
+                    id="minute"
+                    placeholder="00" 
+                    min="0"
+                    max="59"
+                />:
+                <input
+                    type="number" 
+                    id="second"
+                    placeholder="00" 
+                    min="0"
+                    max="59"
+                />:
+                <select id="am_pm">
+                    <option>AM</option>
+                    <option>PM</option>
+                </select>                                                                                           
+            </div>
+            <button class="btn-set-alarm">
+                Set Alarm
+            </button>
+            
+        </div>
+        <div class="alarm-container">
+            <h2>Alarms</h2>
+            <div class="active-Alarms">
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js" ></script>
+</body>
+</html>

@@ -41,10 +41,13 @@ function currentTime(){
     // Format changed from 24hr to 12hr
     if(hours>11){
         hours = hours-12;
-        am_pm = "PM"
-        hours = appendZero(hours)
-    }else{
-        am_pm = "AM"
+        if(hours == 0){
+            hours = 12;
+        }
+        am_pm = "PM";
+        hours = appendZero(hours);
+    }else if(hours<=12){
+        am_pm = "AM";
     }
 
     // Current time display
@@ -63,7 +66,9 @@ function currentTime(){
             }
         })
     }
-    
+
+    // hours = 10;
+    // am_pm = "AM";
 
     // Sun and Moon Movement feature called
     sun_moon_movement(hours, am_pm)
@@ -170,7 +175,6 @@ const createAlarm = (alarmObj) =>{
             startAlarm(e);
         }else{
             stopAlarm(e);
-            checkbox.classList.remove('active');
         }
     });
 
@@ -259,7 +263,7 @@ function sun_moon_movement(hours, am_pm){
         sun.style.top = "-55px";
         sun.style.left = "210px";
         brightness.style.opacity = "0.2";
-    }else if(hours == 0 && am_pm == "PM"){
+    }else if(hours == 12 && am_pm == "PM"){
         sun.style.top = "-100px";
         sun.style.left = "340px";
         brightness.style.opacity = "0";
@@ -350,7 +354,7 @@ window.onload = ()=>{
     if(alarmsArray != null && alarmsArray.length > 0){
         for(let i = 0; i<alarmsArray.length; i++ ){
             createAlarm(alarmsArray[i]);
-        }
+        } 
     }
 }
 
